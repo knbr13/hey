@@ -104,7 +104,7 @@ Options:
 
 func main() {
 	flag.Usage = func() {
-		fmt.Fprint(os.Stderr, fmt.Sprintf(usage, runtime.NumCPU()))
+		fmt.Fprintf(os.Stderr, usage, runtime.NumCPU())
 	}
 
 	var hs headerSlice
@@ -252,18 +252,18 @@ func main() {
 }
 
 func errAndExit(msg string) {
-	fmt.Fprintf(os.Stderr, msg)
-	fmt.Fprintf(os.Stderr, "\n")
+	fmt.Fprint(os.Stderr, msg)
+	fmt.Fprint(os.Stderr, "\n")
 	os.Exit(1)
 }
 
 func usageAndExit(msg string) {
 	if msg != "" {
-		fmt.Fprintf(os.Stderr, msg)
-		fmt.Fprintf(os.Stderr, "\n\n")
+		fmt.Fprint(os.Stderr, msg)
+		fmt.Fprint(os.Stderr, "\n\n")
 	}
 	flag.Usage()
-	fmt.Fprintf(os.Stderr, "\n")
+	fmt.Fprint(os.Stderr, "\n")
 	os.Exit(1)
 }
 
